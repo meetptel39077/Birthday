@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday 🎂</title>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffd6e7, #d9c8ff, #b9eaff);
+    overflow: hidden;
+}
+
+.card {
+    width: 90%;
+    max-width: 450px;
+    padding: 40px 25px;
+    text-align: center;
+    background: rgba(255,255,255,0.85);
+    border-radius: 30px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    animation: appear 1s ease;
+    z-index: 2;
+}
+
+@keyframes appear {
+    from {opacity: 0; transform: translateY(40px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+h1 {
+    color: #ff4f91;
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.cake {
+    font-size: 90px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {transform: translateY(0);}
+    50% {transform: translateY(-12px);}
+}
+
+h2 {
+    color: #7651a8;
+    margin: 15px 0;
+}
+
+.message {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.7;
+    margin: 15px 0 25px;
+}
+
+button {
+    border: none;
+    padding: 14px 28px;
+    background: linear-gradient(45deg, #ff4f91, #ff8c69);
+    color: white;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 5px 20px #ff9bbb;
+}
+
+.footer {
+    margin-top: 25px;
+    color: #999;
+    font-size: 13px;
+}
+
+.balloon {
+    position: absolute;
+    font-size: 55px;
+    animation: float 5s ease-in-out infinite;
+}
+
+.b1 {left: 8%; top: 15%;}
+.b2 {right: 8%; top: 20%; animation-delay: 1s;}
+.b3 {left: 12%; bottom: 12%; animation-delay: 2s;}
+.b4 {right: 12%; bottom: 10%; animation-delay: 1.5s;}
+
+@keyframes float {
+    0%,100% {transform: translateY(0) rotate(-8deg);}
+    50% {transform: translateY(-30px) rotate(8deg);}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="balloon b1">🎈</div>
+<div class="balloon b2">🎈</div>
+<div class="balloon b3">🎉</div>
+<div class="balloon b4">🎈</div>
+
+<div class="card">
+
+    <h1>Happy Birthday! 🎉</h1>
+
+    <div class="cake">🎂</div>
+
+    <h2>Hey Birthday Parthvi! 🌟</h2>
+
+    <p class="message">
+        Wishing you a day filled with happiness,
+        laughter and unforgettable memories! 💖
+        <br><br>
+        May all your dreams come true and
+        may your life always shine with joy.
+        Keep smiling and stay awesome! 🥳
+    </p>
+
+    <button onclick="celebrate()">
+        🎊 Celebrate!
+    </button>
+
+    <div class="footer">
+        FROM MEET
+    </div>
+
+</div>
+
+<script>
+function celebrate() {
+    const duration = 3000;
+    const end = Date.now() + duration;
+
+    const colors = [
+        '#ff4f91',
+        '#ffd700',
+        '#00c9ff',
+        '#a855f7',
+        '#ff8c69'
+    ];
+
+    (function frame() {
+        confetti({
+            particleCount: 6,
+            angle: 60,
+            spread: 65,
+            origin: { x: 0 },
+            colors: colors
+        });
+
+        confetti({
+            particleCount: 6,
+            angle: 120,
+            spread: 65,
+            origin: { x: 1 },
+            colors: colors
+        });
+
+        if (Date.now() < end) {
+            requestAnimationFrame(frame);
+        }
+    })();
+}
+
+// Initial birthday celebration
+window.onload = function() {
+    setTimeout(celebrate, 500);
+};
+</script>
+
+</body>
+</html>
